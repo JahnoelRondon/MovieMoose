@@ -9,9 +9,22 @@ function App() {
         baseUrl: 'http://www.omdbapi.com/?',
         apikey: 'apikey=cb3ee742',
         query: '&t=',
-        searchTitle: 'avatar',
+        searchTitle: '',
         searchUrl: ''
     });
+
+    const handleChange = (event) => {
+        setSearch({...apiSearch, searchTitle: event.target.value})
+        // note:
+        // to update our state we use the setSearch function and pass in a new object.
+        // first we take a copy of the current object and its properties and values
+        // and then we change the searchTitle to the inputs value
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log('submit')
+    }
 
 
     useEffect(() => {
@@ -26,8 +39,15 @@ function App() {
     return (
     <>
         <Header />
-        <form>
-            <input type='text' name='searchTitle' placeholder='search movie' value={apiSearch.searchTitle}/>
+        <form onSubmit={handleSubmit}>
+            <input 
+                type='text' 
+                name='searchTitle' 
+                placeholder='search movie' 
+                value={apiSearch.searchTitle}
+                onChange={handleChange}>
+            </input>
+            <button type='submit'>Submit</button>
         </form>
     </>
     );
