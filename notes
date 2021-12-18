@@ -1,0 +1,5 @@
+-----------(OMDB API)----------
+DOCS: http://www.omdbapi.com/
+
+http://www.omdbapi.com/?s=avatar&apikey=[your key] = a search by title of all that match
+
