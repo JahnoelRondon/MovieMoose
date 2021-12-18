@@ -7,12 +7,15 @@ function App() {
     // -----------------------------------State--------------------------------------------
     const [apiSearch, setSearch] = useState({
         baseUrl: 'http://www.omdbapi.com/?',
-        apikey: 'apikey=cb3ee742',
-        query: '&t=',
+        apikey: '&apikey=cb3ee742',
+        query: '&s=',
         searchTitle: '',
         searchUrl: ''
     });
 
+    
+    // -----------------------------------functions--------------------------------------------
+    
     const handleChange = (event) => {
         setSearch({...apiSearch, searchTitle: event.target.value})
         // note:
@@ -23,17 +26,9 @@ function App() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log('submit')
+        setSearch({...apiSearch, searchUrl: apiSearch.baseUrl + apiSearch.query + apiSearch.searchTitle + apiSearch.apikey})
+        
     }
-
-
-    useEffect(() => {
-        document.title = `Title ${apiSearch.searchTitle}`
-    })
-
-    // -----------------------------------functions--------------------------------------------
-
-
 
 
     return (
