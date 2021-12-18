@@ -1,20 +1,36 @@
-import { useState } from 'react';
+// -----------------------------------imports--------------------------------------------
 import Header from '../../components/Header/Header.jsx'
+import React, {useState, useEffect} from 'react'
 
 function App() {
 
-  const [baseUrl, setUrl] = useState('http://www.omdbapi.com/?')
-  const [apikey, setkey] = useState('apikey=' + cb3ee742)
-  const [query, setquery] = useState('&t=')
-  const [searchTitle, setTitle] = useState('')
-  const [searchUrl, setUrl] = useState('')
+    // -----------------------------------State--------------------------------------------
+    const [apiSearch, setSearch] = useState({
+        baseUrl: 'http://www.omdbapi.com/?',
+        apikey: 'apikey=cb3ee742',
+        query: '&t=',
+        searchTitle: 'avatar',
+        searchUrl: ''
+    });
 
-  return (
-    <div className="App">
-      <Header />
-      <p>Hello</p>
-    </div>
-  );
+
+    useEffect(() => {
+        document.title = `Title ${apiSearch.searchTitle}`
+    })
+
+    // -----------------------------------functions--------------------------------------------
+
+
+
+
+    return (
+    <>
+        <Header />
+        <form>
+            <input type='text' name='searchTitle' placeholder='search movie' value={apiSearch.searchTitle}/>
+        </form>
+    </>
+    );
 }
 
 export default App;
