@@ -1,6 +1,6 @@
 // -----------------------------------imports--------------------------------------------
 import Header from '../../components/Header/Header.jsx'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import * as omdbService from '../../services/omdbapi.js'
 
 function App() {
@@ -26,14 +26,25 @@ function App() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        setSearch({...apiSearch, searchUrl: apiSearch.baseUrl + apiSearch.query + apiSearch.searchTitle + apiSearch.apikey})
+        setSearch({...apiSearch, searchUrl: apiSearch.baseUrl + apiSearch.query + apiSearch.searchTitle + apiSearch.apikey, searchTitle: ''})
 
-        omdbService.search()
+        // concat all of our values to give the fetch end point
+        // make searchTitle an empty string after
     }
+
+    useEffect(() => {
+        if(apiSearch.searchUrl) {
+            omdbService.search(apiSearch.searchUrl)
+            // setSearch({...apiSearch, searchUrl: ''})
+            // reset searchurl after fetching for conditional
+        }
+    },[apiSearch])
+    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
 
     return (
     <>
         <Header />
+
         <form onSubmit={handleSubmit}>
             <input 
                 type='text' 
@@ -44,7 +55,8 @@ function App() {
             </input>
             <button type='submit'>Submit</button>
         </form>
-        <a href={apiSearch.searchUrl}>{apiSearch.searchUrl}</a>
+
+        
     </>
     );
 }

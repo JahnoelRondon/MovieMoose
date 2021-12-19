@@ -1,4 +1,7 @@
 
-export function search(){
-    console.log('ran search service')
+export function search(url){
+    
+    fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
 }
