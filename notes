@@ -1,0 +1,14 @@
+--------------------------------------------(OMDB API)----------
+DOCS: http://www.omdbapi.com/
+
+http://www.omdbapi.com/?s=avatar&apikey=[your key] = a search by title of all that match
+
+When searching by title with one letter the response is false error too many results
+
+------------------------------------------(React Hooks/Forms)--------
+FreeCodeCamp-Video: https://www.youtube.com/watch?v=8hU0I8rY4u4
+
+-------React DOCS:
+From classes to Hooks: https://reactjs.org/docs/hooks-faq.html#from-classes-to-hooks
+
+
