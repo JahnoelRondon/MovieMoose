@@ -51,11 +51,12 @@ function App() {
             omdbService.search(apiSearch.searchUrl)
             .then(data => setSearch({...apiSearch, searchData: data.Search, searchUrl: ''}))
 
-            // 
+            // after the promise get the json object and set the search array as the new search data
             // reset searchurl after fetching for conditional
         }
     },[apiSearch])
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+
     console.log(apiSearch.searchData)
     return (
     <>
@@ -67,8 +68,23 @@ function App() {
         />
 
         {
-            
+            apiSearch.searchData.length ?
+                <div id='idthing'>
+                    {
+                        
+                        apiSearch.searchData.map((movie, idx) => (
+                            <div key={idx}>
+                                <p>{movie.Title}</p>
+                                <img src={movie.Poster} />                                
+                            </div>
+                        ))
+                    }
+                </div>        
+            :
+            <h1>Search something!</h1>
         }
+
+
 
     </>
     );
