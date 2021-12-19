@@ -1,7 +1,17 @@
-// -----------------------------------imports--------------------------------------------
+// ------------------------------------------MUI------------------------
+
+
+// -----------------------------------IMPORTS--------------------------------------------
 import Header from '../../components/Header/Header.jsx'
 import React, {useState, useEffect} from 'react'
 import * as omdbService from '../../services/omdbapi.js'
+
+
+// ------------------------------------------MUI Variables------------------------
+
+
+//------------------------------------My restyling----------
+
 
 function App() {
 
@@ -35,7 +45,7 @@ function App() {
     useEffect(() => {
         if(apiSearch.searchUrl) {
             omdbService.search(apiSearch.searchUrl)
-            // setSearch({...apiSearch, searchUrl: ''})
+            setSearch({...apiSearch, searchUrl: ''})
             // reset searchurl after fetching for conditional
         }
     },[apiSearch])
@@ -43,7 +53,10 @@ function App() {
 
     return (
     <>
-        <Header />
+
+        <Header handleSubmit={handleSubmit}/>
+
+        
 
         <form onSubmit={handleSubmit}>
             <input 
@@ -56,7 +69,7 @@ function App() {
             <button type='submit'>Submit</button>
         </form>
 
-        
+
     </>
     );
 }
