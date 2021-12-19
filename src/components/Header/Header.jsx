@@ -9,8 +9,6 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-import React, {useEffect} from 'react'
-import * as omdbService from './../../services/omdbapi.js'
 
 // ------------------------------------------MUI Variables------------------------
 // search
@@ -58,44 +56,40 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-function Header({handleSubmit, handleChange, apiSearch, setSearch}){
-
-    useEffect(() => {
-        if(apiSearch.searchUrl) {
-            omdbService.search(apiSearch.searchUrl)
-            setSearch({...apiSearch, searchUrl: ''})
-            // reset searchurl after fetching for conditional
-        }
-    },[apiSearch])
-    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+function Header({handleSubmit, handleChange, apiSearch}){
 
     return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit" component="div">
+          <Typography 
+          variant="h6" 
+          color="inherit" 
+          component="div" 
+          sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
             MovieMoose
           </Typography>
 
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <form onSubmit={handleSubmit}>
-            <input 
+
+            <form onSubmit={handleSubmit}>
+                
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+
+                <StyledInputBase
                 type='text' 
                 name='searchTitle' 
                 placeholder='search movie' 
                 value={apiSearch.searchTitle}
-                onChange={handleChange}>
-            </input>
-            <button type='submit'>Submit</button>
-        </form>
+                onChange={handleChange}
+                autoComplete="off"
+                inputProps={{ 'aria-label': 'search' }}
+                />
+            </form>
+          </Search>
+
         </Toolbar>
       </AppBar>
     </Box>

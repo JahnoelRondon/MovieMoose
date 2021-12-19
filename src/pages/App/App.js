@@ -17,11 +17,14 @@ function App() {
 
     // -----------------------------------State--------------------------------------------
     const [apiSearch, setSearch] = useState({
+        // api end point values
         baseUrl: 'http://www.omdbapi.com/?',
         apikey: '&apikey=' + process.env.REACT_APP_API_KEY,
         query: '&s=',
         searchTitle: '',
-        searchUrl: ''
+        searchUrl: '',
+        // data
+        searchData: []
     });
     
     // -----------------------------------functions--------------------------------------------
@@ -42,18 +45,20 @@ function App() {
         // make searchTitle an empty string after
     }
 
-    // useEffect(() => {
-    //     if(apiSearch.searchUrl) {
-    //         omdbService.search(apiSearch.searchUrl)
-    //         setSearch({...apiSearch, searchUrl: ''})
-    //         // reset searchurl after fetching for conditional
-    //     }
-    // },[apiSearch])
-    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+    useEffect(() => {
+        if(apiSearch.searchUrl) {
 
+            omdbService.search(apiSearch.searchUrl)
+            .then(data => setSearch({...apiSearch, searchData: data.Search, searchUrl: ''}))
+
+            // 
+            // reset searchurl after fetching for conditional
+        }
+    },[apiSearch])
+    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+    console.log(apiSearch.searchData)
     return (
     <>
-
         <Header 
         handleSubmit={handleSubmit}
         handleChange={handleChange}
@@ -61,19 +66,9 @@ function App() {
         setSearch={setSearch}
         />
 
-        
-
-        {/* <form onSubmit={handleSubmit}>
-            <input 
-                type='text' 
-                name='searchTitle' 
-                placeholder='search movie' 
-                value={apiSearch.searchTitle}
-                onChange={handleChange}>
-            </input>
-            <button type='submit'>Submit</button>
-        </form> */}
-
+        {
+            
+        }
 
     </>
     );
