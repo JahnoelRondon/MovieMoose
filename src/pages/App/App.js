@@ -1,18 +1,18 @@
 // -----------------------------------imports--------------------------------------------
 import Header from '../../components/Header/Header.jsx'
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import * as omdbService from '../../services/omdbapi.js'
 
 function App() {
 
     // -----------------------------------State--------------------------------------------
     const [apiSearch, setSearch] = useState({
         baseUrl: 'http://www.omdbapi.com/?',
-        apikey: '&apikey=cb3ee742',
+        apikey: '&apikey=' + process.env.REACT_APP_API_KEY,
         query: '&s=',
         searchTitle: '',
         searchUrl: ''
     });
-
     
     // -----------------------------------functions--------------------------------------------
     
@@ -27,9 +27,9 @@ function App() {
     const handleSubmit = (event) => {
         event.preventDefault()
         setSearch({...apiSearch, searchUrl: apiSearch.baseUrl + apiSearch.query + apiSearch.searchTitle + apiSearch.apikey})
-        
-    }
 
+        omdbService.search()
+    }
 
     return (
     <>
@@ -44,6 +44,7 @@ function App() {
             </input>
             <button type='submit'>Submit</button>
         </form>
+        <a href={apiSearch.searchUrl}>{apiSearch.searchUrl}</a>
     </>
     );
 }
