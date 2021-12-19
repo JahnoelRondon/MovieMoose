@@ -20,7 +20,7 @@ function App() {
         // api end point values
         baseUrl: 'http://www.omdbapi.com/?',
         apikey: '&apikey=' + process.env.REACT_APP_API_KEY,
-        query: '&s=',
+        query: '&type=movie&s=',
         searchTitle: '',
         searchUrl: '',
         // data
@@ -66,16 +66,18 @@ function App() {
         apiSearch={apiSearch}
         setSearch={setSearch}
         />
+        
 
+        {/* conditional rendering, checking to see if the array is empty */}
         {
             apiSearch.searchData.length ?
                 <div id='idthing'>
                     {
                         
-                        apiSearch.searchData.map((movie, idx) => (
-                            <div key={idx}>
+                        apiSearch.searchData.map(movie => (
+                            <div key={movie.imdbID}>
                                 <p>{movie.Title}</p>
-                                <img src={movie.Poster} />                                
+                                <img src={movie.Poster} alt='no image'/>                                
                             </div>
                         ))
                     }
