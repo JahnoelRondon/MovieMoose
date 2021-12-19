@@ -9,6 +9,8 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
+import React, {useEffect} from 'react'
+import * as omdbService from './../../services/omdbapi.js'
 
 // ------------------------------------------MUI Variables------------------------
 // search
@@ -54,7 +56,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-function Header(){
+
+
+function Header({handleSubmit, handleChange, apiSearch, setSearch}){
+
+    useEffect(() => {
+        if(apiSearch.searchUrl) {
+            omdbService.search(apiSearch.searchUrl)
+            setSearch({...apiSearch, searchUrl: ''})
+            // reset searchurl after fetching for conditional
+        }
+    },[apiSearch])
+    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+
     return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -62,6 +76,7 @@ function Header(){
           <Typography variant="h6" color="inherit" component="div">
             MovieMoose
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -71,6 +86,16 @@ function Header(){
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <form onSubmit={handleSubmit}>
+            <input 
+                type='text' 
+                name='searchTitle' 
+                placeholder='search movie' 
+                value={apiSearch.searchTitle}
+                onChange={handleChange}>
+            </input>
+            <button type='submit'>Submit</button>
+        </form>
         </Toolbar>
       </AppBar>
     </Box>

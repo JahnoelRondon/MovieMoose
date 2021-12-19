@@ -42,23 +42,28 @@ function App() {
         // make searchTitle an empty string after
     }
 
-    useEffect(() => {
-        if(apiSearch.searchUrl) {
-            omdbService.search(apiSearch.searchUrl)
-            setSearch({...apiSearch, searchUrl: ''})
-            // reset searchurl after fetching for conditional
-        }
-    },[apiSearch])
+    // useEffect(() => {
+    //     if(apiSearch.searchUrl) {
+    //         omdbService.search(apiSearch.searchUrl)
+    //         setSearch({...apiSearch, searchUrl: ''})
+    //         // reset searchurl after fetching for conditional
+    //     }
+    // },[apiSearch])
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
 
     return (
     <>
 
-        <Header handleSubmit={handleSubmit}/>
+        <Header 
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        apiSearch={apiSearch}
+        setSearch={setSearch}
+        />
 
         
 
-        <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}>
             <input 
                 type='text' 
                 name='searchTitle' 
@@ -67,7 +72,7 @@ function App() {
                 onChange={handleChange}>
             </input>
             <button type='submit'>Submit</button>
-        </form>
+        </form> */}
 
 
     </>
