@@ -57,7 +57,6 @@ function App() {
     },[apiSearch])
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
 
-    console.log(apiSearch.searchData)
     return (
     <>
         <Header 
@@ -66,27 +65,6 @@ function App() {
         apiSearch={apiSearch}
         setSearch={setSearch}
         />
-        
-
-        {/* conditional rendering, checking to see if the array is empty */}
-        {
-            apiSearch.searchData.length ?
-                <div id='idthing'>
-                    {
-                        
-                        apiSearch.searchData.map(movie => (
-                            <div key={movie.imdbID}>
-                                <p>{movie.Title}</p>
-                                <img src={movie.Poster} alt='no image'/>                                
-                            </div>
-                        ))
-                    }
-                </div>        
-            :
-            <h1>Search something!</h1>
-        }
-
-
 
     </>
     );
