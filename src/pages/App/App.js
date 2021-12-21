@@ -2,9 +2,14 @@
 
 
 // -----------------------------------IMPORTS--------------------------------------------
-import Header from '../../components/Header/Header.jsx'
 import React, {useState, useEffect} from 'react'
 import * as omdbService from '../../services/omdbapi.js'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
+// components
+import Header from '../../components/Header/Header.jsx'
+import {WatchedPage} from '../WatchedPage/WatchedPage.jsx'
+import {WatchList} from '../WatchList/WatchList.jsx'
+import {AddPage} from '../AddPage/AddPage.jsx'
 
 
 // ------------------------------------------MUI Variables------------------------
@@ -58,7 +63,8 @@ function App() {
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
 
     return (
-    <>
+    <Router>
+
         <Header 
         handleSubmit={handleSubmit}
         handleChange={handleChange}
@@ -66,7 +72,23 @@ function App() {
         setSearch={setSearch}
         />
 
-    </>
+        {/* route pages */}
+
+        <Routes>
+
+            {/* redirect to Watchlist */}
+            <Route path="/" element={<Navigate replace to='WatchList' />} />
+
+            {/* create WatchList */}
+            <Route path='/WatchList' element={<WatchList />}/>
+
+            <Route path='/Watched' element={<WatchedPage />}/>
+
+            <Route path='/Add' element={<AddPage />}/>
+
+        </Routes>
+
+    </Router>
     );
 }
 

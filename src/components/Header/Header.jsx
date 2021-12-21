@@ -1,3 +1,6 @@
+// ------------------------------------------Imports------------------------
+import {Link} from 'react-router-dom'
+
 // ------------------------------------------MUI------------------------
 // Header
 import AppBar from '@mui/material/AppBar';
@@ -8,6 +11,14 @@ import Typography from '@mui/material/Typography';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+// for links
+import * as React from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
+import Menu from '@mui/material/Menu';
+import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 
 
 // ------------------------------------------MUI Variables------------------------
@@ -54,43 +65,115 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+// page links
+const pages = ['WatchList', 'Watched', 'Add'];
 
 
 function Header({handleSubmit, handleChange, apiSearch}){
 
+    // code for page links
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+
+
     return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar variant="dense">
-          <Typography 
-          variant="h6" 
-          color="inherit" 
-          component="div" 
-          sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
-            MovieMoose
-          </Typography>
+        <Container maxWidth="xl">
+          <Toolbar variant="dense">
+            <Typography 
+            variant="h6"
+            component="div" 
+            sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>MovieMoose</Link>
+            </Typography>    
 
-          <Search>
+            {/* Add Links Here */}
 
-            <form onSubmit={handleSubmit}>
-                
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
+            {/* code for dropdown */}
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography textAlign="center" color='black'>{page}</Typography></Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
 
-                <StyledInputBase
-                type='text' 
-                name='searchTitle' 
-                placeholder='search movie' 
-                value={apiSearch.searchTitle}
-                onChange={handleChange}
-                autoComplete="off"
-                inputProps={{ 'aria-label': 'search' }}
-                />
-            </form>
-          </Search>
+            {/* code for medium and higher size screen */}
 
-        </Toolbar>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography color="white">{page}</Typography></Link>
+                </Button>
+              ))}
+            </Box>
+
+
+            {/* End Links here */}
+
+            <Search>
+
+              <form onSubmit={handleSubmit}>
+                  
+                  <SearchIconWrapper>
+                      <SearchIcon />
+                  </SearchIconWrapper>
+
+                  <StyledInputBase
+                  type='text' 
+                  name='searchTitle' 
+                  placeholder='search movie' 
+                  value={apiSearch.searchTitle}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  inputProps={{ 'aria-label': 'search' }}
+                  />
+              </form>
+            </Search>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
     );
