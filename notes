@@ -36,6 +36,11 @@ when updating the URL so the / entry won't end up in the history stack.
 style={{ textDecoration: 'none' }}
 
 
+-------------------------------------(Material UI)-----------
+Themeing:
+DOCS: https://mui.com/customization/theming/
+Video: https://www.youtube.com/watch?v=bDkB3LoQKxs
+
 
 ------------------------(Other)-----------
 

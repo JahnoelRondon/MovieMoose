@@ -1,10 +1,12 @@
-// ------------------------------------------MUI------------------------
-
+// ------------------------------------------MUI Themeing------------------------
+import {ThemeProvider } from '@mui/material/styles';
+import {theme} from './../../themes/theme.js'
 
 // -----------------------------------IMPORTS--------------------------------------------
 import React, {useState, useEffect} from 'react'
 import * as omdbService from '../../services/omdbapi.js'
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
+
 // components
 import Header from '../../components/Header/Header.jsx'
 import {WatchedPage} from '../WatchedPage/WatchedPage.jsx'
@@ -15,7 +17,6 @@ import {AddPage} from '../AddPage/AddPage.jsx'
 // ------------------------------------------MUI Variables------------------------
 
 
-//------------------------------------My restyling----------
 
 
 function App() {
@@ -63,33 +64,37 @@ function App() {
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
 
     console.log(apiSearch.searchData, apiSearch.searchUrl)
+    
     return (
-    <Router>
+        <Router>
 
-        <Header 
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        apiSearch={apiSearch}
-        setSearch={setSearch}
-        />
+            <ThemeProvider theme={theme}>
 
-        {/* route pages */}
+                <Header 
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                apiSearch={apiSearch}
+                setSearch={setSearch}
+                />
 
-        <Routes>
+                {/* route pages */}
 
-            {/* redirect to Watchlist */}
-            <Route path="/" element={<Navigate replace to='WatchList' />} />
+                <Routes>
 
-            {/* create WatchList */}
-            <Route path='/WatchList' element={<WatchList />}/>
+                    {/* redirect to Watchlist */}
+                    <Route path="/" element={<Navigate replace to='WatchList' />} />
 
-            <Route path='/Watched' element={<WatchedPage />}/>
+                    {/* create WatchList */}
+                    <Route path='/WatchList' element={<WatchList />}/>
 
-            <Route path='/Add' element={<AddPage />}/>
+                    <Route path='/Watched' element={<WatchedPage />}/>
 
-        </Routes>
+                    <Route path='/Add' element={<AddPage />}/>
 
-    </Router>
+                </Routes>
+            </ThemeProvider>
+
+        </Router>
     );
 }
 

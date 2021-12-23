@@ -20,7 +20,6 @@ import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 
-
 // ------------------------------------------MUI Variables------------------------
 // search
 const Search = styled('div')(({ theme }) => ({
@@ -85,97 +84,98 @@ function Header({handleSubmit, handleChange, apiSearch}){
 
 
     return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar variant="dense">
-            <Typography 
-            variant="h6"
-            component="div" 
-            sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
-              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Movie Moose</Link>
-            </Typography>    
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Container maxWidth="xl">
+            <Toolbar variant="dense">
+              <Typography 
+              variant="h6"
+              component="div" 
+              mr={3}
+              sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
+                <Link to="/" style={{ textDecoration: 'none', color: 'red' }}>Movie Moose</Link>
+              </Typography>    
 
-            {/* Add Links Here */}
+              {/* Add Links Here */}
 
-            {/* code for dropdown */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: 'block', md: 'none' },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography textAlign="center" color='black'>{page}</Typography></Link>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-
-            {/* code for medium and higher size screen */}
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+              {/* code for dropdown */}
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit"
                 >
-                  <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography color="white">{page}</Typography></Link>
-                </Button>
-              ))}
-            </Box>
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography textAlign="center" color='black'>{page}</Typography></Link>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+
+              {/* code for medium and higher size screen */}
+
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    <Link to={`/${page}`} style={{ textDecoration: 'none' }}><Typography color="white">{page}</Typography></Link>
+                  </Button>
+                ))}
+              </Box>
 
 
-            {/* End Links here */}
+              {/* End Links here */}
 
-            <Search>
+              <Search>
 
-              <form onSubmit={handleSubmit}>
-                  
-                  <SearchIconWrapper>
-                      <SearchIcon />
-                  </SearchIconWrapper>
+                <form onSubmit={handleSubmit}>
+                    
+                    <SearchIconWrapper>
+                        <SearchIcon />
+                    </SearchIconWrapper>
 
-                  <StyledInputBase
-                  type='text' 
-                  name='searchTitle' 
-                  placeholder='search movie' 
-                  value={apiSearch.searchTitle}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  inputProps={{ 'aria-label': 'search' }}
-                  />
-              </form>
-            </Search>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </Box>
+                    <StyledInputBase
+                    type='text' 
+                    name='searchTitle' 
+                    placeholder='search movie' 
+                    value={apiSearch.searchTitle}
+                    onChange={handleChange}
+                    autoComplete="off"
+                    inputProps={{ 'aria-label': 'search' }}
+                    />
+                </form>
+              </Search>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Box>
     );
 }
 
