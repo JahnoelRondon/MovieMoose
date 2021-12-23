@@ -1,4 +1,4 @@
-----------------------------------(Material to Learn)----------
+----------------------------------(Material's Learned)----------
 API
 REACT Hooks
 Local Storage
@@ -26,8 +26,18 @@ From classes to Hooks: https://reactjs.org/docs/hooks-faq.html#from-classes-to-h
 ------------------------------------------(React Router Dom)--------
 ***Redirecting with Navigate component: https://gist.github.com/mjackson/b5748add2795ce7448a366ae8f8ae3bb
 
-The new <Navigate> element in v6 works like a declarative version of the useNavigate() hook. It's particularly handy in situations where you need a React element to declare your navigation intent, like <Route element>. It also replaces any uses that you had for a <Redirect> element in v5 outside of a <Switch>.
-***The <Navigate replace> prop tells the router to use history.replaceState() when updating the URL so the / entry won't end up in the history stack.
+The new <Navigate> element in v6 works like a declarative version of the useNavigate() hook. 
+It's particularly handy in situations where you need a React element to declare your navigation intent, 
+like <Route element>. It also replaces any uses that you had for a <Redirect> element in v5 outside of a <Switch>.
+***The <Navigate replace> prop tells the router to use history.replaceState() 
+when updating the URL so the / entry won't end up in the history stack.
 
 ***Removing text decoration on Link components
 style={{ textDecoration: 'none' }}
+
+
+
+------------------------(Other)-----------
+
+Resetting Local and Remote commits: 
+https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/
