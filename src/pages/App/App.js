@@ -52,22 +52,21 @@ function App() {
         
         // concat all of our values to give the fetch end point
         // make searchTitle an empty string after
-        navigate("/search")
     }
     
     useEffect(() => {
         if(apiSearch.searchUrl) {
             
             omdbService.search(apiSearch.searchUrl)
-            .then(data => setSearch({...apiSearch, searchData: data.results, searchUrl: ''}))
+            .then(data => setSearch({...apiSearch, searchData: data.results, searchUrl: '' }))
+            .then(() => {navigate("/search")})
             
             // after the promise get the json object and set the search array as the new search data
             // reset searchurl after fetching for conditional
+            // after it resolves then navigate to the search page where results are passed to.
         }
-    },[apiSearch])
+    },[apiSearch, navigate])
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
-    
-    console.log(apiSearch.searchData, apiSearch.searchUrl)
     
     return (
         <ThemeProvider theme={theme}>
