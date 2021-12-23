@@ -93,7 +93,7 @@ function Header({handleSubmit, handleChange, apiSearch}){
             variant="h6"
             component="div" 
             sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
-              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>MovieMoose</Link>
+              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Movie Moose</Link>
             </Typography>    
 
             {/* Add Links Here */}
