@@ -4,6 +4,7 @@ import './searchpage.css'
 
 export const SearchPage = ({searchData}) => {
     console.log(searchData);
+    const {addToWatchlist} = useContext(GlobalContext)
     return (
         <div className='searchContainer'>
             {
@@ -15,7 +16,7 @@ export const SearchPage = ({searchData}) => {
                         <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`${movie.title} poster`}/>
                         <div className='movieContent'>
                             <p>{movie.title}<br/><small>{movie.release_date.substring(0,4)}</small></p>
-                            <button>add to watchlist</button>
+                            <button onClick={() => addToWatchlist(movie)}>add to watchlist</button>
                             <button>already watched</button>                            
                         </div>
 

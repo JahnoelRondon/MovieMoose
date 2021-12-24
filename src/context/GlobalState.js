@@ -19,7 +19,7 @@ export const GlobalProvider = (props) => {
     // actions
     const addToWatchlist = (movie) => {
         dispatch({ type: "ADD_TO_WATCHLIST", payload: movie})
-    }
+    };
 
     return (
         <GlobalContext.Provider value={{watchlist: state.watchlist, watched: state.watched, addToWatchlist}}>
