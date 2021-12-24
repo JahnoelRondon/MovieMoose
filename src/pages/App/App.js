@@ -6,7 +6,7 @@ import {theme} from './../../themes/theme.js'
 import React, {useState, useEffect} from 'react'
 import * as omdbService from '../../services/omdbapi.js'
 import {Routes, Route, Navigate, useNavigate} from 'react-router-dom'
-
+import { GlobalProvider } from '../../context/GlobalState.js';
 
 // components
 import Header from '../../components/Header/Header.jsx'
@@ -69,31 +69,35 @@ function App() {
     // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
     
     return (
-        <ThemeProvider theme={theme}>
+        <GlobalProvider>
 
-            <Header 
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            apiSearch={apiSearch}
-            setSearch={setSearch}
-            />
+            <ThemeProvider theme={theme}>
 
-            {/* route pages */}
+                <Header 
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                apiSearch={apiSearch}
+                setSearch={setSearch}
+                />
 
-            <Routes>
+                {/* route pages */}
 
-                {/* redirect to Watchlist */}
-                <Route path="/" element={<Navigate replace to='WatchList' />} />
+                <Routes>
 
-                {/* create WatchList */}
-                <Route path='/WatchList' element={<WatchList />}/>
+                    {/* redirect to Watchlist */}
+                    <Route path="/" element={<Navigate replace to='WatchList' />} />
 
-                <Route path='/Watched' element={<WatchedPage />}/>
+                    {/* create WatchList */}
+                    <Route path='/WatchList' element={<WatchList />}/>
 
-                <Route path='/search' element={<SearchPage searchData={apiSearch.searchData} />}/>
+                    <Route path='/Watched' element={<WatchedPage />}/>
 
-            </Routes>
-        </ThemeProvider>
+                    <Route path='/search' element={<SearchPage searchData={apiSearch.searchData} />}/>
+
+                </Routes>
+            </ThemeProvider>
+
+        </GlobalProvider>
     );
 }
 

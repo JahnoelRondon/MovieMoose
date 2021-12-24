@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { GlobalContext } from '../../context/GlobalState';
 import './searchpage.css'
 
 export const SearchPage = ({searchData}) => {
@@ -11,9 +12,9 @@ export const SearchPage = ({searchData}) => {
                     movie.poster_path ? 
 
                     <div className='movie' key={movie.id}>
-                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}/>
+                        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`${movie.title} poster`}/>
                         <div className='movieContent'>
-                            <p>{movie.title}<br/><small>{movie.release_date}</small></p>
+                            <p>{movie.title}<br/><small>{movie.release_date.substring(0,4)}</small></p>
                             <button>add to watchlist</button>
                             <button>already watched</button>                            
                         </div>

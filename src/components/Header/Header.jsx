@@ -93,7 +93,7 @@ function Header({handleSubmit, handleChange, apiSearch}){
               component="div" 
               mr={3}
               sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}>
-                <Link to="/" style={{ textDecoration: 'none', color: 'red' }}>Movie Moose</Link>
+                <Link to="/" style={{ textDecoration: 'none', color: 'red' }}>MovieMoose</Link>
               </Typography>    
 
               {/* Add Links Here */}
@@ -164,7 +164,7 @@ function Header({handleSubmit, handleChange, apiSearch}){
                     <StyledInputBase
                     type='text' 
                     name='searchTitle' 
-                    placeholder='search movie' 
+                    placeholder='search' 
                     value={apiSearch.searchTitle}
                     onChange={handleChange}
                     autoComplete="off"
