@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 50%;
+    margin: 20px auto;
+}
+
+
+.movie {
+
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    background-color: #111111;
+    margin-bottom: 12px;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.movieContent {
+    display: grid;
+
+    grid-template-rows: 1.5fr .2fr .2fr;
+    row-gap: 6px;
+
+    padding: 6px 6px 0 6px;
+    text-align: center;
+
+}
+
+.movieContent p {
+    font-weight: bold;
+    color: white;
+}
+
+.movieContent p small {
+    font-weight: lighter;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.movieContent button {
+    
+}
