@@ -7,13 +7,20 @@ const initState = {
     watched: []
 };
 
-// create the contect
+// CONTEXT
+
+// when ever we want to use the data from the MovieProvider, we import MovieContext
+// into the component, the component must be wrapped insde of the Provider
 export const GlobalContext = createContext(initState)
 
-//provider component
 
-// the provider allows us to access the global context from other components/variables
+// PROVIDER
+
+// Holds information and provides information to the different components that are wrapped within it
+// usually wrapped around the entire app
 export const GlobalProvider = (props) => {
+
+    // state represents the arrays in our initial state being passed in and dispatch is sort of an alias for action in our reducer.
     const [state, dispatch] = useReducer(AppReducer, initState);
 
     // actions

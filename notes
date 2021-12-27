@@ -9,7 +9,7 @@ Material UI
 
 
 --------------------------------------------(TMBD API)----------
-DOCS: 
+DOCS: https://developers.themoviedb.org/3/search/search-movies
 
 
 
@@ -17,11 +17,27 @@ DOCS:
 FreeCodeCamp-Video: https://www.youtube.com/watch?v=8hU0I8rY4u4
 
 
+------------------------------------------(React Context API)--------
+DOCS: https://reactjs.org/docs/hooks-reference.html
+When to use: https://reactjs.org/docs/context.html#when-to-use-context
 
--------React DOCS:
-From classes to Hooks: https://reactjs.org/docs/hooks-faq.html#from-classes-to-hooks
+Context API Video: https://www.youtube.com/watch?v=35lXWvCuM8o&t=1015s
+Proj Video Reference: https://www.youtube.com/watch?v=1eO_hNYzaSc&t=64s
+Article: https://sebhastian.com/react-context-api/
 
+Prop-Drilling-Issue:
+Having certain states in the highest parent component and passing it down
+would give us the headache of prop drilling when we have 50+ components and we want to
+go passing props down to a specific component. With tools like context api and redux we can set global
+varaibles for certain data/information like user information or simple storage. 
 
+--------------------------------------(React Hooks)------------
+From classes to Hooks DOCS: https://reactjs.org/docs/hooks-faq.html#from-classes-to-hooks
+
+useReducer article: https://alligator.io/react/usereducer/
+
+useReducer:
+this hook takes in a state and a reducer function. 
 
 ------------------------------------------(React Router Dom)--------
 ***Redirecting with Navigate component: https://gist.github.com/mjackson/b5748add2795ce7448a366ae8f8ae3bb
@@ -32,7 +48,7 @@ like <Route element>. It also replaces any uses that you had for a <Redirect> el
 ***The <Navigate replace> prop tells the router to use history.replaceState() 
 when updating the URL so the / entry won't end up in the history stack.
 
-***Removing text decoration on Link components
+***Restyling text decoration on Link components with inline styles n double brackets
 style={{ textDecoration: 'none' }}
 
 

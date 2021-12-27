@@ -66,7 +66,7 @@ function App() {
             // after it resolves then navigate to the search page where results are passed to.
         }
     },[apiSearch, navigate])
-    // 2nd parameter is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list
+    // 2nd parameter with brackets is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list as well as specifying the render
     
     return (
         <GlobalProvider>
