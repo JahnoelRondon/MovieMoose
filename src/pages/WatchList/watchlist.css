@@ -21,6 +21,11 @@
     transition: all 0.2s;
 }
 
+.movieWatch button {
+    display: none;
+    transition: all 0.2s;
+}
+
 .movieWatch:hover {
     box-shadow: 1px 2px 16px rgba(255, 0, 0, 0.7);
 }
@@ -29,8 +34,26 @@
     width: 100%
 }
 
+.movieWatch:hover button {
+    display: block;
+}
+
 .movieWatch button {
     position: absolute;
     top: 90%;
-    left: 45%;
+    left: 43%;
+
+    background: black;
+	color: rgba(255, 0, 0, 0.3);
+	border: 1px solid red;
+	padding: 5px 20px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    transition: all 0.1s;
+}
+
+.movieWatch button:hover {
+	padding: 5px 21px;
+    color: red;
 }
