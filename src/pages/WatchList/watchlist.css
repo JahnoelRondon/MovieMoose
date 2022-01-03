@@ -15,7 +15,8 @@
 }
 
 .movieWatch {
-    width: 25%;
+    position: relative;
+    width: 300px;
     margin: 10px;
     transition: all 0.2s;
 }
@@ -26,4 +27,10 @@
 
 .movieWatch img {
     width: 100%
+}
+
+.movieWatch button {
+    position: absolute;
+    top: 90%;
+    left: 45%;
 }
