@@ -18,7 +18,7 @@
 .movie {
     display: grid;
     grid-template-columns: 0.7fr 1fr;
-    background-color: #111111;
+    background-color: #080808;
     margin-bottom: 12px;
 }
 
@@ -37,12 +37,46 @@
 
 }
 
-.movieContent p {
+.movieContent .title {
     font-weight: bold;
+    font-size: 1rem;
     color: white;
 }
 
-.movieContent p small {
+.movieContent .title small {
     font-weight: lighter;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.movieContent button {
+    background: black;
+	color: rgba(255, 0, 0, 0.3);
+	border: 1px solid red;
+	padding: 5px 20px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    transition: all 0.3s;
+}
+
+.movieContent button:hover {
+	color: red;
+}
+
+@media only screen and (max-width: 400px) {
+    .searchContainer {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .movieContent .title {
+        font-size: 2rem;
+    }
+    .movieContent .title small {
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
 }
