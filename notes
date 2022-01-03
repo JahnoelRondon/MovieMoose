@@ -63,7 +63,9 @@ Video: https://www.youtube.com/watch?v=bDkB3LoQKxs
 Resetting Local and Remote commits: 
 https://www.shellhacks.com/git-remove-all-commits-clear-git-history-local-remote/
 
-
-
 Local Storage:
 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+CSS files: 
+Even though the components are not being rendering when they are not on the proper url route,
+the css files will still be appended to the html. 

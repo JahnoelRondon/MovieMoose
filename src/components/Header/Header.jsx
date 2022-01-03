@@ -65,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 // page links
-const pages = ['WatchList', 'Watched'];
+const pages = ['WatchList'];
 
 
 function Header({handleSubmit, handleChange, apiSearch}){

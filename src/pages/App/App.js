@@ -10,7 +10,6 @@ import { GlobalProvider } from '../../context/GlobalState.js';
 
 // components
 import Header from '../../components/Header/Header.jsx'
-import {WatchedPage} from '../WatchedPage/WatchedPage.jsx'
 import {WatchList} from '../WatchList/WatchList.jsx'
 import {SearchPage} from '../SearchPage/SearchPage.jsx'
 
@@ -89,8 +88,6 @@ function App() {
 
                     {/* create WatchList */}
                     <Route path='/WatchList' element={<WatchList />}/>
-
-                    <Route path='/Watched' element={<WatchedPage />}/>
 
                     <Route path='/search' element={<SearchPage searchData={apiSearch.searchData} />}/>
 

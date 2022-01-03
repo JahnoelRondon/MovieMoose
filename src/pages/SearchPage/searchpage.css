@@ -16,7 +16,6 @@
 
 
 .movie {
-
     display: grid;
     grid-template-columns: 0.7fr 1fr;
     background-color: #111111;
@@ -30,7 +29,7 @@
 .movieContent {
     display: grid;
 
-    grid-template-rows: 1.5fr .2fr .2fr;
+    grid-template-rows: 1.5fr .2fr;
     row-gap: 6px;
 
     padding: 6px 6px 0 6px;
@@ -46,8 +45,4 @@
 .movieContent p small {
     font-weight: lighter;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.movieContent button {
-    
 }

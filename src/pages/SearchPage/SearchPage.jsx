@@ -25,9 +25,7 @@ export const SearchPage = ({searchData}) => {
                             disabled={watchlist.find(storedMovie => storedMovie.id === movie.id ? true : false)}
                             >
                                 add to watchlist
-                            </button>
-
-                            <button>already watched</button>                            
+                            </button>                          
                         </div>
 
                     </div>
