@@ -3,8 +3,9 @@ import {AppReducer} from './AppReducer'
 
 // initial state
 const initState = {
-    watchlist: [],
-    watched: []
+    watchlist: localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : [],
+
+    watched: localStorage.getItem('watched') ? JSON.parse(localStorage.getItem('watched')) : []
 };
 
 // CONTEXT
@@ -22,6 +23,11 @@ export const GlobalProvider = (props) => {
 
     // state represents the arrays in our initial state being passed in and dispatch is sort of an alias for action in our reducer.
     const [state, dispatch] = useReducer(AppReducer, initState);
+
+    useEffect(() => {
+        localStorage.setItem('watchlist', JSON.stringify(state.watchlist))
+        localStorage.setItem('watched', JSON.stringify(state.watched))
+    }, [state])
 
     // actions
     const addToWatchlist = (movie) => {
