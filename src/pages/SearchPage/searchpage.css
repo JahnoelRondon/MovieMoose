@@ -10,8 +10,9 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    width: 50%;
+    width: 40%;
     margin: 20px auto;
+    transition: all 0.5s
 }
 
 
@@ -64,7 +65,7 @@
 	color: red;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 540px) {
     .searchContainer {
         width: 90%;
     }
@@ -72,7 +73,7 @@
 
 @media only screen and (min-width: 800px) {
     .movieContent .title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .movieContent .title small {
         font-size: 1rem;

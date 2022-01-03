@@ -1,8 +1,11 @@
-## MovieMoose
+# MovieMoose
 
-A React app that lets you see movie information based on third party api OMDB.
+A React app that lets you search movie's based on third party api OMDB and save them to a watchlist.
 
-small project to learn:
-React Hooks
-API
-Material UI
+Deployed Link: 
+![moviemoose](https://i.imgur.com/Rc6Hp11.png)
+
+### Instructions
+It's as easy as typing into the search bar for a movie and selecting which one you would like to add!
+
+![Imgur](https://i.imgur.com/fYH513b.png)
