@@ -14,11 +14,6 @@ import {WatchList} from '../WatchList/WatchList.jsx'
 import {SearchPage} from '../SearchPage/SearchPage.jsx'
 
 
-// ------------------------------------------MUI Variables------------------------
-
-
-
-
 function App() {
     let navigate = useNavigate();
     
@@ -29,9 +24,7 @@ function App() {
         apikey: '?api_key=' + process.env.REACT_APP_TMDB_API_KEY,
         query: '&language=en-US&page=1&include_adult=false&query=',
         searchTitle: '',
-        searchUrl: '',
-        // data
-        searchData: [],
+        searchUrl: ''
     });
 
     
@@ -68,6 +61,7 @@ function App() {
     // 2nd parameter with brackets is to prevent an infite chain of updates when using useState/setSearch in useEffect with useEffect dependancy list as well as specifying the render
     
     return (
+        // GlobalProvider is the context api parent that allows the children component to use global variables
         <GlobalProvider>
 
             <ThemeProvider theme={theme}>
