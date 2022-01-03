@@ -10,7 +10,9 @@ export const SearchPage = ({searchData}) => {
     return (
         <div className='searchContainer'>
             {
+                
                 searchData.map(movie => (
+                    
                     
                     // if poster movie path exists render otherwise render no value
                     movie.poster_path ? 
@@ -23,7 +25,7 @@ export const SearchPage = ({searchData}) => {
                             onClick={() => addToWatchlist(movie)}
                             disabled={watchlist.find(storedMovie => storedMovie.id === movie.id ? true : false)}
                             >
-                                Add to watchlist
+                                {watchlist.find(storedMovie => storedMovie.id === movie.id ? true : false) ? 'In my watchlist' : 'Add to Watchlist'}
                             </button>                          
                         </div>
 
