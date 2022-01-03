@@ -2,7 +2,7 @@
 
 A React app that lets you search movie's based on third party api OMDB and save them to a watchlist.
 
-Deployed Link: https://relaxed-golick-f575a4.netlify.app/WatchList
+Deployed Link: https://relaxed-golick-f575a4.netlify.app
 ![moviemoose](https://i.imgur.com/Rc6Hp11.png)
 
 ### Instructions
