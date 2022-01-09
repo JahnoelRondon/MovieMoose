@@ -27,6 +27,9 @@ It's as easy as typing into the search bar for a movie, selecting which one you 
 
 For future additions I would like to add a detail page after clicking on a movie to show the descriptions of the movie as well as other info using another react component.
 
+## Current Issue's 
+
+Some movies have a release date of an empty string causing an error when mapping and using substring for the first 4 digits. 
 
 ## Additional info
 
