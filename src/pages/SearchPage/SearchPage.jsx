@@ -20,7 +20,12 @@ export const SearchPage = ({searchData}) => {
                     <div className='movie' key={movie.id}>
                         <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={`${movie.title} poster`}/>
                         <div className='movieContent'>
-                            <p className="title">{movie.title}<br/><small>{movie.release_date.substring(0,4)}</small></p>
+                            <p className="title">{movie.title}<br/>
+                                <small>{
+                                    movie.release_date ? 
+                                    movie.release_date.substring(0,4) : ''
+                                }</small>
+                            </p>
                             <button 
                             onClick={() => addToWatchlist(movie)}
                             disabled={watchlist.find(storedMovie => storedMovie.id === movie.id ? true : false)}
